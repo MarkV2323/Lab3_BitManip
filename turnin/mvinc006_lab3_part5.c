@@ -47,11 +47,12 @@ int main(void) {
     if (totalWeight >= 70) {
         // B1 needs to go to 1
         tmpBout = 0x02;
-    } else if (totalWeight >= 5) {
+    } else if (totalWeight > 5) {
         // B2 needs to go to 1
         tmpBout = 0x04;
     } else {
         // ignore if less than 5 lbs.
+        tmpBout = 0x00;
     }
 
     // Writes output

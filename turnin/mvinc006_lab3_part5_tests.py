@@ -51,7 +51,7 @@ tests = [
     # Total input on pins is 0 0000 0011 = 3. <70 <5 so B2 will be 0, B1 is 0.
     # output pin should be PINB = 0000 0000 or 0x00.
     {'description': 'PINB: 0x01, PIND: 0x02 => PINB: 0x00',
-    'steps': [ {'inputs': [('PINB',0x00), ('PIND',0x01)], 'iterations': 3 } ],
+    'steps': [ {'inputs': [('PINB',0x01), ('PIND',0x02)], 'iterations': 3 } ],
     'expected': [('PORTB',0x00)],
     },
 
