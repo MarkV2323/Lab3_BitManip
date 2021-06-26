@@ -22,16 +22,16 @@ tests = [
     
     # Total input on pins is 0 0001 1111 = 31. <70 >5 so B2 will be 1, B1 is 0.
     # output pin should be PINB = 0000 0101 or 0x05.
-    {'description': 'PINB: 0x01, PIND: 0x0F => PINB: 0x05',
+    {'description': 'PINB: 0x01, PIND: 0x0F => PINB: 0x04',
     'steps': [ {'inputs': [('PINB',0x01), ('PIND',0x0F)], 'iterations': 3 } ],
-    'expected': [('PORTB',0x05)],
+    'expected': [('PORTB',0x04)],
     },
    
     # Total input on pins is 1 1111 0011 = 249. >70 >5 so B1 will be 1, B2 is 0.
     # output pin should be PINB = 0000 0011 or 0x03.
-    {'description': 'PINB: 0x01, PIND: 0xF9 => PINB: 0x03',
+    {'description': 'PINB: 0x01, PIND: 0xF9 => PINB: 0x02',
     'steps': [ {'inputs': [('PINB',0x01), ('PIND',0xF9)], 'iterations': 3 } ],
-    'expected': [('PORTB',0x03)],
+    'expected': [('PORTB',0x02)],
     },
     
     # Total input on pins is 0 0000 0010 = 0. <70 <5 so B2 will be 0, B1 is 0.
@@ -41,6 +41,21 @@ tests = [
     'expected': [('PORTB',0x00)],
     },
     
+    # Total input on pins is 0 0100 0101 = 69. <70 >5 so B1 will be 0, B2 is 1.
+    # output pin should be PINB = 0000 0011 or 0x03.
+    {'description': 'PINB: 0x01, PIND: 0x22 => PINB: 0x04',
+    'steps': [ {'inputs': [('PINB',0x01), ('PIND',0x22)], 'iterations': 3 } ],
+    'expected': [('PORTB',0x04)],
+    },
+    
+    # Total input on pins is 0 0000 0011 = 3. <70 <5 so B2 will be 0, B1 is 0.
+    # output pin should be PINB = 0000 0000 or 0x00.
+    {'description': 'PINB: 0x01, PIND: 0x02 => PINB: 0x00',
+    'steps': [ {'inputs': [('PINB',0x00), ('PIND',0x01)], 'iterations': 3 } ],
+    'expected': [('PORTB',0x00)],
+    },
+
+
     ]
 
 # What variables to watch

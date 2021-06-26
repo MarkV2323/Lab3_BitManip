@@ -33,7 +33,7 @@ int main(void) {
     while (1) {
     
     // Reads input
-    tmpBin = PINB & 0x09;
+    tmpBin = PINB & 0xF9;
     tmpD   = PIND & 0xFF;
 
     // Add entire input D onto totalWeight and shift left 1.
@@ -46,10 +46,10 @@ int main(void) {
     // Decides if what lights need to go on.
     if (totalWeight >= 70) {
         // B1 needs to go to 1
-        tmpBout = (tmpBin & 0x01) | 0x02;
+        tmpBout = 0x02;
     } else if (totalWeight >= 5) {
         // B2 needs to go to 1
-        tmpBout = (tmpBin & 0x01) | 0x04;
+        tmpBout = 0x04;
     } else {
         // ignore if less than 5 lbs.
     }
