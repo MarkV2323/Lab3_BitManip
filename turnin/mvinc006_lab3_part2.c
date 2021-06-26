@@ -16,7 +16,7 @@
  *  Fuel Level 10 to 12 => PC5 - PC1 is 1
  *  Fuel Level 13 to 15 => PC5 - PC0 is 1
  *
- *  Low Fuel Level at 7 to 9 => PC6 is 1
+ *  Low Fuel Level at 4 or less => PC6 is 1
  *
  *	I acknowledge all content contained herein, excluding template or example
  *	code, is my own original work.
@@ -54,24 +54,28 @@ int main(void) {
             tmpC = 0x3F;
 
         } else if (lightLevel >= 10) {
-            // 1 on pins PC4 - PC0
-            tmpC = 0x1F;
+            // 1 on pins PC5 - PC1
+            tmpC = 0x3E;
 
         } else if (lightLevel >= 7)  {
-            // 1 on pins PC3 - PC0 and PC6
-            tmpC = 0x4F;
+            // 1 on pins PC5 - PC2
+            tmpC = 0x3C;
             
         } else if (lightLevel >= 5)  {
-            // 1 on pins PC2 - PC0 and PC6
-            tmpC = 0x47;
+            // 1 on pins PC5 - PC3
+            tmpC = 0x38;
+
+        } else if (lightLevel == 4)  {
+            // 1 on pins PC5 - PC4 and PC6
+            tmpC = 0x70;
 
         } else if (lightLevel >= 3)  {
-            // 1 on pins PC1 - PC0 and PC6
-            tmpC = 0x43;
+            // 1 on pins PC5 - PC4 and PC6
+            tmpC = 0x70;
 
         } else if (lightLevel > 0) {
-            // 1 on pins PC0 and PC6
-            tmpC = 0x41;
+            // 1 on pins PC5 and PC6
+            tmpC = 0x60;
 
         } else {
             // fuel is empty, no lights except fuel light empty
